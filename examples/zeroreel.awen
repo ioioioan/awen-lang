@@ -1,0 +1,67 @@
+AWEN 0.1
+
+PROJECT ZeroReel
+OUTPUT responsive web MVP
+ROOT .
+
+SOURCES
+  PRODUCT       ./docs/product.md       AUTHORITATIVE
+  UX            ./docs/ux.md            AUTHORITATIVE
+  ARCHITECTURE  ./docs/architecture.md  AUTHORITATIVE
+  ENGINEERING   ./docs/engineering.md   AUTHORITATIVE
+  REFERENCE     ./docs/references.md     CONTEXT
+
+IMPLEMENTATION
+  ROOT  ./src/
+  TESTS ./tests/
+  INFRA ./infra/
+
+STACK
+  TypeScript
+  PostgreSQL
+  Azure
+
+REQUIRE
+  responsive web first
+  semantic HTML
+  accessible interaction
+  share -> submit -> curate -> discover -> profile credibility loop
+
+PREFER
+  CSS OVER JavaScript for presentation
+  progressive enhancement
+  native platform features OVER dependencies
+  minimal client state
+
+AVOID
+  unnecessary dependencies
+  premature native applications
+  AI features that distort the core product
+
+FORBID
+  client-side authorization
+  RAG as a requirement for core discovery
+
+APPROVAL
+  HUMAN authentication architecture changes
+  HUMAN database migrations with destructive impact
+  HUMAN new external services
+  HUMAN changes to the core product loop
+
+NON-GOALS
+  native mobile app in MVP
+  AI-first customer experience
+  monetisation features before core usefulness
+
+EXECUTION
+  INSTRUCTIONS ./AGENTS.md
+
+DONE WHEN
+  creators can submit films
+  curators can review and publish films
+  visitors can discover published films
+  profiles support creator credibility
+  responsive UI works across target breakpoints
+  accessibility checks pass
+  automated tests pass
+  Azure deployment succeeds

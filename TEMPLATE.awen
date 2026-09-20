@@ -1,0 +1,46 @@
+AWEN 0.1
+
+REVISION <optional commit, tag or source-pack version>
+PROJECT <name>
+OUTPUT <artifact>
+ROOT .
+
+SOURCES
+  <ROLE>  ./path/to/source.md  AUTHORITATIVE
+  <ROLE>  ./path/to/reference.md  CONTEXT
+
+IMPLEMENTATION
+  ROOT ./output-or-source-root/
+
+STACK
+  <chosen technology, medium or production component>
+
+TOOLS
+  <optional required capability or deliberately chosen tool/model/agent>
+
+REQUIRE
+  <non-negotiable requirement>
+
+PREFER
+  <strong preference>
+
+AVOID
+  <choice normally not wanted>
+
+FORBID
+  <prohibited choice>
+
+APPROVAL
+  HUMAN <decision or change requiring approval>
+
+NON-GOALS
+  <explicitly excluded scope>
+
+BLOCKERS
+  <unresolved decision that must not be guessed>
+
+EXECUTION
+  INSTRUCTIONS <optional path to repository/agent operating instructions>
+
+DONE WHEN
+  <concrete acceptance criterion>

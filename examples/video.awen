@@ -1,0 +1,36 @@
+AWEN 0.1
+
+PROJECT Example Short Film
+OUTPUT AI-assisted short film
+ROOT .
+
+SOURCES
+  SCRIPT      ./sources/script.md       AUTHORITATIVE
+  VISUAL      ./sources/visual/         AUTHORITATIVE
+  CHARACTERS  ./sources/characters.md   AUTHORITATIVE
+  AUDIO       ./sources/audio/          CONTEXT
+
+TOOLS
+  image generation model
+  video generation model
+  audio production tools
+  non-linear editor
+
+REQUIRE
+  character continuity
+  shot continuity
+  approved aspect ratio
+
+PREFER
+  reuse approved visual references
+  preserve camera language from shot plan
+
+APPROVAL
+  HUMAN character redesign
+  HUMAN final shot selection
+  HUMAN final edit
+
+DONE WHEN
+  all required shots are generated or sourced
+  continuity review passes
+  final edit is exported

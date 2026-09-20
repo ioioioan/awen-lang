@@ -1,0 +1,32 @@
+AWEN 0.1
+
+PROJECT Example Novel
+OUTPUT complete novel manuscript
+ROOT .
+
+SOURCES
+  STORY       ./sources/story.md       AUTHORITATIVE
+  CHARACTERS  ./sources/characters.md  AUTHORITATIVE
+  STYLE       ./sources/style.md       AUTHORITATIVE
+  RESEARCH    ./sources/research/      CONTEXT
+
+REQUIRE
+  consistent point of view
+  continuity across chapters
+  preserve locked story events
+
+PREFER
+  vivid concrete prose
+  scene-led structure
+
+AVOID
+  exposition that repeats known information
+
+APPROVAL
+  HUMAN structural story changes
+  HUMAN new major characters
+
+DONE WHEN
+  complete manuscript exists
+  continuity review passes
+  all locked story events are present
