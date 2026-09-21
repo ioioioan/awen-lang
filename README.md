@@ -10,7 +10,6 @@ You explore, research, argue, refine and lock decisions in whatever workspace yo
 
 > **Vibe freely. Commit deliberately. Build precisely.**
 
-
 ## For AI agents
 
 If you are an AI or coding/production agent reading this repository, start with [`AGENTS.md`](AGENTS.md), then read [`SPEC.md`](SPEC.md) and [`TEMPLATE.awen`](TEMPLATE.awen).
@@ -26,8 +25,11 @@ It can describe:
 - what is being produced;
 - which files are authoritative sources;
 - where those files live;
+- which pre-written content must be preserved verbatim;
 - which tools, languages, models or stacks are chosen;
+- core user or artifact behaviour that must not be misinterpreted;
 - what is required, preferred, avoided or forbidden;
+- which temporary seams or substitutes are explicitly acceptable;
 - what needs human approval;
 - what counts as done;
 - optionally, which exact source/repository revision the handoff represents.
@@ -63,10 +65,12 @@ finished artifact
 4. **Precision over ceremony.** Add only information that removes ambiguity or preserves intent.
 5. **Progressive enhancement.** Markdown and ordinary project files remain useful without Awen-aware tooling.
 6. **Exact sources.** Prefer explicit relative paths, roles and authority over dumping whole workspaces into context.
-7. **Human authority.** Approval gates make consequential decisions explicit.
-8. **Portable intent.** The same committed synthesis should survive a change of model, agent or production tool.
-9. **Roles before vendors.** Recommend tool roles and capabilities by default; lock a named tool or model only when the creator intentionally chooses it.
-10. **Deterministic checks first.** Where possible, verify outputs with tests, compilers, schemas, validators and other objective tooling rather than asking an LLM to judge everything.
+7. **Semantic behaviour first.** Describe what the user or artifact must actually experience, not just the technologies involved.
+8. **Explicit seams.** If a mock, stub, placeholder or temporary substitute is acceptable, say so. Do not let an agent silently replace real behaviour with a seam.
+9. **Human authority.** Approval gates make consequential decisions explicit.
+10. **Portable intent.** The same committed synthesis should survive a change of model, agent or production tool.
+11. **Roles before vendors.** Recommend tool roles and capabilities by default; lock a named tool or model only when the creator intentionally chooses it.
+12. **Deterministic checks first.** Where possible, verify outputs with tests, compilers, schemas, validators and other objective tooling rather than asking an LLM to judge everything.
 
 ## Minimal example
 
@@ -80,13 +84,17 @@ ROOT .
 SOURCES
   PRODUCT       ./docs/product.md       AUTHORITATIVE
   UX            ./docs/ux.md            AUTHORITATIVE
-  ARCHITECTURE  ./docs/architecture.md  AUTHORITATIVE
-  RESEARCH      ./docs/research.md      CONTEXT
+  CONTENT       ./content/homepage.md    AUTHORITATIVE VERBATIM
+  RESEARCH      ./docs/research.md       CONTEXT
 
 STACK
   TypeScript
   PostgreSQL
   Azure
+
+BEHAVIOR
+  primary film playback stays on the film detail page through approved embeds
+  external source links remain visible for provenance, fallback and attribution
 
 REQUIRE
   responsive web
@@ -104,6 +112,9 @@ AVOID
 
 FORBID
   client-side authorization
+
+SEAMS
+  only explicitly listed temporary substitutes are acceptable
 
 APPROVAL
   HUMAN authentication changes
@@ -148,7 +159,7 @@ See [`TOOLS.md`](TOOLS.md) for the tool-selection philosophy.
 - [`WORKFLOW.md`](WORKFLOW.md) — how Awen fits between creative work and production.
 - [`TOOLS.md`](TOOLS.md) — AI-agnostic tool roles, optional integrations and verification guidance.
 - [`TEMPLATE.awen`](TEMPLATE.awen) — canonical starting template.
-- [`examples/`](examples/) — small examples across different output domains.
+- [`examples/`](examples/) — small examples across software, book, video and data outputs.
 
 ## MVP status
 

@@ -1,33 +1,31 @@
 AWEN 0.1
 
-PROJECT Example Data Build
+PROJECT Example Dataset
 OUTPUT cleaned analysis dataset
 ROOT .
 
 SOURCES
-  RAW     ./data/input/      AUTHORITATIVE
-  SCHEMA  ./docs/schema.md   AUTHORITATIVE
-  RULES   ./docs/rules.md    AUTHORITATIVE
-
-IMPLEMENTATION
-  ROOT ./data/output/
+  RAW          ./data/raw/               AUTHORITATIVE
+  SCHEMA       ./docs/schema.md          AUTHORITATIVE
+  REFERENCE    ./docs/methodology.md     CONTEXT
 
 REQUIRE
   preserve source identifiers
   validate dates
   document transformations
-  retain provenance
+  deterministic output from the same inputs
 
 FORBID
   fabricated values
   silent row deletion
 
+SEAMS
+  sampled development subset allowed for local iteration
+
 APPROVAL
-  HUMAN destructive source transformations
-  HUMAN schema changes
+  HUMAN destructive transformation of source fields
 
 DONE WHEN
   schema validation passes
-  transformation log exists
   provenance is recorded
-  output dataset is reproducible
+  transformation log is complete

@@ -6,7 +6,8 @@ OUTPUT <artifact>
 ROOT .
 
 SOURCES
-  <ROLE>  ./path/to/source.md  AUTHORITATIVE
+  <ROLE>  ./path/to/source.md     AUTHORITATIVE
+  <ROLE>  ./path/to/content.md    AUTHORITATIVE VERBATIM
   <ROLE>  ./path/to/reference.md  CONTEXT
 
 IMPLEMENTATION
@@ -16,7 +17,10 @@ STACK
   <chosen technology, medium or production component>
 
 TOOLS
-  <optional required capability or deliberately chosen tool/model/agent>
+  <optional deliberately chosen tool/model/agent or capability>
+
+BEHAVIOR
+  <core user or artifact behaviour that must not be misinterpreted>
 
 REQUIRE
   <non-negotiable requirement>
@@ -30,6 +34,9 @@ AVOID
 FORBID
   <prohibited choice>
 
+SEAMS
+  <explicitly acceptable mock, stub, placeholder or temporary substitute>
+
 APPROVAL
   HUMAN <decision or change requiring approval>
 
@@ -40,7 +47,7 @@ BLOCKERS
   <unresolved decision that must not be guessed>
 
 EXECUTION
-  INSTRUCTIONS <optional path to repository/agent operating instructions>
+  INSTRUCTIONS <optional path to agent/workflow instructions>
 
 DONE WHEN
   <concrete acceptance criterion>

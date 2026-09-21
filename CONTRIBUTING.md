@@ -13,6 +13,7 @@ Ask:
 5. Does it preserve progressive enhancement?
 6. Does it remain useful across capable models, agents and vendors?
 7. Is this really language semantics, or should it remain non-normative guidance in `TOOLS.md`?
+8. Is the proposal backed by a real production ambiguity or failure mode rather than speculation?
 
 Prefer examples and evidence from real projects over speculative language growth.
 
@@ -22,6 +23,7 @@ Prefer examples and evidence from real projects over speculative language growth
 - Update `TEMPLATE.awen` when a core section changes.
 - Add or update examples when a change affects real usage.
 - Avoid breaking v0.1 syntax without a clear precision or usability benefit.
+- Prefer small hardening changes proven by real assembly sheets.
 
 ## Scope
 

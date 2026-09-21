@@ -5,32 +5,33 @@ OUTPUT AI-assisted short film
 ROOT .
 
 SOURCES
-  SCRIPT      ./sources/script.md       AUTHORITATIVE
-  VISUAL      ./sources/visual/         AUTHORITATIVE
-  CHARACTERS  ./sources/characters.md   AUTHORITATIVE
-  AUDIO       ./sources/audio/          CONTEXT
+  SCRIPT       ./sources/script.md       AUTHORITATIVE
+  VISUAL       ./sources/visual.md       AUTHORITATIVE
+  AUDIO        ./sources/audio.md        AUTHORITATIVE
+  REFERENCE    ./sources/reference/      CONTEXT
 
 TOOLS
-  image generation model
-  video generation model
-  audio production tools
-  non-linear editor
+  VIDEO MODEL capable video generation model
+  IMAGE MODEL capable image generation model
+  EDITOR non-linear editor
+
+BEHAVIOR
+  character identity and spatial continuity remain coherent across shots
 
 REQUIRE
-  character continuity
-  shot continuity
   approved aspect ratio
+  readable dialogue
+  consistent character design
 
-PREFER
-  reuse approved visual references
-  preserve camera language from shot plan
+SEAMS
+  low-resolution preview renders allowed before final approval
+  temporary guide audio allowed before final mix
 
 APPROVAL
-  HUMAN character redesign
   HUMAN final shot selection
   HUMAN final edit
 
 DONE WHEN
-  all required shots are generated or sourced
+  final cut renders successfully
   continuity review passes
-  final edit is exported
+  approved audio mix is present

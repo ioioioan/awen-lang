@@ -21,6 +21,12 @@ STACK
   PostgreSQL
   Azure
 
+BEHAVIOR
+  primary film playback happens on the ZeroReel film detail page through approved YouTube or Vimeo embeds when embedding is allowed
+  users stay on ZeroReel for the primary watch experience
+  external source links remain visible for provenance, fallback and platform attribution
+  outbound source links are secondary to embedded playback
+
 REQUIRE
   responsive web first
   semantic HTML
@@ -41,6 +47,7 @@ AVOID
 FORBID
   client-side authorization
   RAG as a requirement for core discovery
+  outbound-only primary film playback
 
 APPROVAL
   HUMAN authentication architecture changes
@@ -60,6 +67,8 @@ DONE WHEN
   creators can submit films
   curators can review and publish films
   visitors can discover published films
+  approved external video sources play through embeds on film detail pages
+  external source provenance/fallback remains clearly available
   profiles support creator credibility
   responsive UI works across target breakpoints
   accessibility checks pass

@@ -17,11 +17,14 @@ Resolve the important choices:
 - intended output;
 - authoritative sources;
 - chosen stack, tools or production approach;
+- core user or artifact behaviour;
 - hard requirements;
 - preferences and tradeoffs;
 - forbidden choices;
+- acceptable MVP seams or temporary substitutes;
 - approval boundaries;
-- completion criteria.
+- completion criteria;
+- pre-written content that must remain verbatim.
 
 Do not ask the production agent to rediscover decisions that the creator has already made.
 
@@ -42,6 +45,14 @@ project.awen
 production
 ```
 
+Before handoff, check five ambiguity hotspots:
+
+1. **Behaviour** — is the real user/artifact experience explicit, including primary versus fallback paths?
+2. **Reality versus seam** — which integrations or outputs must be real now, and which temporary substitutes are explicitly acceptable?
+3. **Inputs** — do seed/demo/fixture inputs actually exercise the real behaviour they are meant to validate?
+4. **Content** — is any pre-written copy, script or manuscript required verbatim?
+5. **Blockers** — has every unresolved decision been surfaced instead of left for the executor to guess?
+
 ## 4. Execute
 
 Give the assembly sheet and sources to the chosen AI, agent or production tool.
@@ -59,15 +70,19 @@ Prefer deterministic checks when the medium supports them. For software this can
 
 LLM review can supplement these checks, but Awen should not turn subjective model judgement into a substitute for objective verification when objective verification exists.
 
+Where an MVP relies on seed/demo/fixture data, use inputs that are semantically valid for the real behaviour unless the assembly sheet explicitly allows placeholders.
+
 ## 6. Escalate instead of guessing
 
 The executor should surface:
 
 - conflicts between authoritative sources;
-- unmet `REQUIRE` declarations;
+- unmet `REQUIRE` or `BEHAVIOR` declarations;
 - attempted `FORBID` violations;
+- undeclared substitution of real behaviour with a mock, stub or placeholder;
 - `APPROVAL` items;
-- unresolved `BLOCKERS`.
+- unresolved `BLOCKERS`;
+- missing `VERBATIM` source content.
 
 ## 7. Finish against the assembly sheet
 
@@ -86,7 +101,6 @@ The assembly sheet is not a transcript of every production decision. It is the c
 > **Vibe freely. Commit deliberately. Build precisely.**
 
 Awen is the handoff between creative synthesis and craft.
-
 
 ## Tool interoperability
 

@@ -1,32 +1,34 @@
 AWEN 0.1
 
-PROJECT Example Novel
-OUTPUT complete novel manuscript
+PROJECT Example Book
+OUTPUT edited manuscript
 ROOT .
 
 SOURCES
-  STORY       ./sources/story.md       AUTHORITATIVE
-  CHARACTERS  ./sources/characters.md  AUTHORITATIVE
-  STYLE       ./sources/style.md       AUTHORITATIVE
-  RESEARCH    ./sources/research/      CONTEXT
+  OUTLINE      ./sources/outline.md      AUTHORITATIVE
+  STYLE        ./sources/style.md        AUTHORITATIVE
+  CONTENT      ./sources/preface.md      AUTHORITATIVE VERBATIM
+  RESEARCH     ./sources/research/       CONTEXT
+
+BEHAVIOR
+  preserve the declared narrative voice and chapter structure across the manuscript
 
 REQUIRE
-  consistent point of view
-  continuity across chapters
-  preserve locked story events
+  internal continuity
+  source-grounded factual claims where research is used
 
 PREFER
-  vivid concrete prose
-  scene-led structure
+  clear prose
+  consistent terminology
 
-AVOID
-  exposition that repeats known information
+SEAMS
+  placeholder chapter epigraphs allowed until final editorial pass
 
 APPROVAL
-  HUMAN structural story changes
-  HUMAN new major characters
+  HUMAN structural chapter changes
+  HUMAN deletion or rewriting of VERBATIM content
 
 DONE WHEN
   complete manuscript exists
   continuity review passes
-  all locked story events are present
+  VERBATIM content is preserved

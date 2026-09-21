@@ -51,7 +51,7 @@ EXECUTION
 
 Use the distinction deliberately:
 
-- `project.awen` describes **what is being assembled**, the governing sources, constraints, preferences, approvals and completion boundary.
+- `project.awen` describes **what is being assembled**, the governing sources, behaviour, constraints, preferences, seams, approvals and completion boundary.
 - `AGENTS.md` or equivalent describes **how an agent should operate inside that repository**.
 
 A project does not need `AGENTS.md` to use Awen.

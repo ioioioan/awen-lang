@@ -19,7 +19,9 @@ A valid Awen document should be:
 - useful even when no Awen-specific parser exists;
 - suitable for software, writing, video, data and other AI-assisted production;
 - portable across capable models, agents and vendors;
-- explicit about named tools only when tool choice is itself part of the committed synthesis.
+- explicit about named tools only when tool choice is itself part of the committed synthesis;
+- explicit about core behaviour where technical wording alone could leave the user experience ambiguous;
+- explicit about any mock, stub, placeholder or temporary seam that is acceptable.
 
 ## 3. File convention
 
@@ -42,6 +44,7 @@ Awen uses section headings and indented declarations.
 - Free text is permitted where controlled vocabulary would add no value.
 - Exact paths should be used when referring to files or directories.
 - Awen should not imitate an implementation language.
+- Awen should express the minimum structure needed to preserve intent and remove production ambiguity.
 
 Awen v0.1 is defined semantically rather than by a formal parser grammar. Future grammar work must preserve readability and backwards compatibility where practical.
 
@@ -107,7 +110,7 @@ Recommended form:
 ```awen
 SOURCES
   PRODUCT       ./docs/product.md       AUTHORITATIVE
-  UX            ./docs/ux.md            AUTHORITATIVE
+  CONTENT       ./content/homepage.md    AUTHORITATIVE VERBATIM
   RESEARCH      ./docs/research.md      CONTEXT
 ```
 
@@ -115,12 +118,19 @@ Each source has:
 
 1. a **role** chosen by the creator;
 2. an exact relative **path**;
-3. an **authority** level.
+3. an **authority** level;
+4. optionally, a **handling qualifier**.
 
 Awen v0.1 defines two authority levels:
 
 - `AUTHORITATIVE` — current settled source; production should follow it unless a conflict is explicitly escalated.
 - `CONTEXT` — useful supporting material that must not override authoritative sources.
+
+Awen v0.1 defines one handling qualifier:
+
+- `VERBATIM` — preserve the source content exactly in the produced artifact wherever that source is used. Do not rewrite, paraphrase, shorten or stylistically adapt it without human approval.
+
+Without `VERBATIM`, authority applies to the source's meaning, requirements and decisions rather than necessarily to exact wording or formatting.
 
 Source role names are intentionally open. Examples include `PRODUCT`, `UX`, `ARCHITECTURE`, `ENGINEERING`, `STYLE`, `STORY`, `SCRIPT`, `DATA`, `SCHEMA`, `CONTENT`, `RESEARCH`, `REFERENCE` and `AGENT`.
 
@@ -129,9 +139,9 @@ Source resolution rules:
 - resolve relative paths against `ROOT`;
 - do not invent or search for a replacement when an exact declared path is missing; surface the missing source;
 - read `AUTHORITATIVE` sources as governing inputs and `CONTEXT` sources as supporting inputs;
+- preserve `VERBATIM` sources exactly unless the creator approves a change;
 - source ordering does not override authority;
 - prefer precise files over broad directories when practical, to avoid unnecessary context ingestion.
-
 
 ### `IMPLEMENTATION`
 
@@ -184,6 +194,22 @@ Awen is AI-agnostic by default. A named tool records a project decision; it does
 
 Awen does not define model routing, API invocation or tool-specific command syntax in v0.1.
 
+### `BEHAVIOR`
+
+Optional. Declares core interaction or artifact semantics where technical implementation wording alone could be misunderstood.
+
+Use `BEHAVIOR` for statements such as what the user actually experiences, which path is primary, or how an output should function in practice.
+
+```awen
+BEHAVIOR
+  primary film playback happens on the film detail page through approved embeds
+  external source links are secondary provenance and fallback paths
+```
+
+`BEHAVIOR` is not a place for low-level implementation detail. It exists to prevent a technically plausible build from producing the wrong real-world experience.
+
+Behavior declarations are binding at the same strength as `REQUIRE` unless the declaration explicitly says otherwise.
+
 ### `REQUIRE`
 
 Non-negotiable production requirements.
@@ -228,6 +254,28 @@ FORBID
 ```
 
 The executor should not violate a `FORBID` declaration without human intervention.
+
+### `SEAMS`
+
+Optional. Declares controlled substitutes that are explicitly acceptable for the current production target.
+
+A seam may be a stub, mock, local adapter, placeholder integration, reduced-fidelity asset or other deliberate temporary boundary.
+
+```awen
+SEAMS
+  AUTH deterministic local seam allowed
+  STORAGE remote storage adapter may be stubbed
+```
+
+Rules:
+
+- seams must be explicit;
+- an executor must not silently replace required real behaviour with a mock or placeholder merely because it is easier;
+- the declared seam should state what is allowed, not just name a subsystem;
+- core behaviour should remain real unless a seam explicitly permits substitution;
+- where demo, seed or fixture data exercises a real integration, it should be semantically valid for that integration unless the assembly sheet explicitly allows otherwise.
+
+This section is especially useful for MVPs because it separates **acceptable implementation seams** from **behaviour that must already be real**.
 
 ### `APPROVAL`
 
@@ -297,11 +345,14 @@ Awen should not silently resolve genuine contradictions in the committed synthes
 Where guidance overlaps without being directly contradictory, use this strength ordering:
 
 1. `FORBID`
-2. `REQUIRE`
+2. `REQUIRE` and `BEHAVIOR`
 3. `APPROVAL` boundaries
-4. `AVOID`
-5. `PREFER`
-6. contextual source material
+4. explicit `SEAMS`
+5. `AVOID`
+6. `PREFER`
+7. contextual source material
+
+`SEAMS` never weaken `FORBID`, `REQUIRE` or `BEHAVIOR` unless the assembly sheet explicitly states that the seam is the accepted way to satisfy that requirement for the current output.
 
 Authoritative sources should not contradict one another. If they do, the executor should surface the conflict rather than choose silently.
 
@@ -360,12 +411,31 @@ Typical authoritative source roles:
 - architecture or production approach;
 - data or schema definitions;
 - style, tone or continuity rules;
-- content or script;
+- pre-written content or script;
 - safety, compliance or quality constraints.
 
 Research and inspiration are usually better marked `CONTEXT` unless deliberately promoted into the committed specification.
 
-## 10. v0.1 non-goals
+For pre-written material:
+
+- use an appropriate source role such as `CONTENT`, `SCRIPT`, `COPY` or `MANUSCRIPT`;
+- add `VERBATIM` when exact wording must survive production unchanged;
+- omit `VERBATIM` when the source governs meaning or direction but adaptation is allowed.
+
+## 10. Pre-handoff precision check
+
+Before treating an Awen sheet as committed, confirm:
+
+- the primary user or artifact behaviour is unambiguous;
+- primary and fallback paths are distinguished where relevant;
+- runtime/integration depth is clear enough that the executor cannot mistake a placeholder for the intended behaviour;
+- every acceptable mock, stub or temporary substitute is declared in `SEAMS`;
+- seed/demo/fixture inputs are realistic enough to exercise the behaviours they are meant to validate;
+- pre-written content that must not be rewritten is marked `VERBATIM`;
+- unresolved decisions are in `BLOCKERS`, not left for the executor to guess;
+- `DONE WHEN` describes observable completion.
+
+## 11. v0.1 non-goals
 
 Awen v0.1 does not define:
 
