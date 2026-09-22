@@ -25,6 +25,7 @@ An `.awen` file captures the creator's committed production intent: output, auth
 - Do not revive discarded brainstorming or infer decisions that were not made.
 - Do not invent unresolved choices. Mark them explicitly when they block production.
 - Use exact relative paths for sources when available.
+- For existing software or repositories, declare `REPOSITORY` so the executor knows which codebase and base state to modify.
 - Label source roles clearly.
 - Distinguish `AUTHORITATIVE` sources from `CONTEXT` sources.
 - Mark pre-written content `VERBATIM` when exact wording must survive production unchanged.
@@ -41,15 +42,17 @@ An `.awen` file captures the creator's committed production intent: output, auth
 When an `.awen` file is provided for production:
 
 1. Read the assembly sheet first.
-2. Resolve and read its declared sources according to their roles, authority and handling qualifiers.
-3. Treat the assembly sheet and `AUTHORITATIVE` sources as the committed handoff.
-4. Preserve `VERBATIM` content exactly unless human approval changes it.
-5. Use `CONTEXT` sources as supporting material, not as authority over committed decisions.
-6. Implement `BEHAVIOR` as the real user/artifact semantics, not merely a technically plausible approximation.
-7. Use a mock, stub, placeholder or local substitute only when `SEAMS` explicitly permits it.
-8. Follow declared constraints and approval gates.
-9. Use ordinary domain tooling to produce the requested artifact.
-10. Prefer deterministic verification where available: tests, compilers, schemas, validators, linters, render checks, or equivalent objective checks.
-11. Do not change the committed build contract silently.
+2. If `REPOSITORY` is present, inspect that repository and verify any declared `BRANCH`/`BASE` before planning changes. Do not treat an existing repository as a fresh build.
+3. Preserve unrelated existing behaviour unless the assembly sheet explicitly changes it.
+4. Resolve and read its declared sources according to their roles, authority and handling qualifiers.
+5. Treat the assembly sheet and `AUTHORITATIVE` sources as the committed handoff.
+6. Preserve `VERBATIM` content exactly unless human approval changes it.
+7. Use `CONTEXT` sources as supporting material, not as authority over committed decisions.
+8. Implement `BEHAVIOR` as the real user/artifact semantics, not merely a technically plausible approximation.
+9. Use a mock, stub, placeholder or local substitute only when `SEAMS` explicitly permits it.
+10. Follow declared constraints and approval gates.
+11. Use ordinary domain tooling to produce the requested artifact.
+12. Prefer deterministic verification where available: tests, compilers, schemas, validators, linters, render checks, or equivalent objective checks.
+13. Do not change the committed build contract silently.
 
 Awen is AI-agnostic. These instructions should remain usable with Codex, Claude, Gemini, Cursor, GitHub Copilot, local models, specialist production agents, and future AI systems.

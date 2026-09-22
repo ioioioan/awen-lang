@@ -33,7 +33,7 @@ project.awen
 
 Recommended encoding: UTF-8.
 
-Paths are relative to `ROOT` unless explicitly documented otherwise.
+Paths are relative to top-level `ROOT` unless explicitly documented otherwise. When `REPOSITORY` is present, its `ROOT` identifies the existing repository to modify.
 
 ## 4. Syntax philosophy
 
@@ -100,6 +100,36 @@ Declares the project root for relative paths.
 ```awen
 ROOT .
 ```
+
+### `REPOSITORY`
+
+Optional. Identifies the repository or codebase that an Awen handoff should modify. Use this for existing products, feature work, refinements, migrations and controlled rebuilds.
+
+```awen
+REPOSITORY
+  MODE existing
+  ROOT .
+  REMOTE https://github.com/example/project
+  BRANCH main
+  BASE <commit-or-tag>
+```
+
+Fields:
+
+- `MODE existing` — treat the referenced repository as an existing product. Inspect and modify it; do not rebuild the project from scratch unless the assembly sheet explicitly requires that.
+- `ROOT` — repository path, resolved relative to top-level `ROOT`. When omitted, it defaults to the top-level `ROOT`.
+- `REMOTE` — optional repository URL for provenance or retrieval when the execution environment needs it.
+- `BRANCH` — optional intended branch or branch context.
+- `BASE` — optional commit, tag or revision that pins the expected starting state.
+
+Rules:
+
+- `REPOSITORY` is strongly recommended when the assembly sheet changes an existing project.
+- If `BASE` is declared and the repository state does not match, the executor should surface the mismatch rather than silently proceeding against a different baseline.
+- Preserve unrelated existing behaviour unless the assembly sheet explicitly changes it.
+- Inspect the existing repository before planning modifications.
+- Do not treat `REMOTE` as authoritative over the local repository state unless the assembly sheet or execution environment explicitly says to fetch or reset.
+- A new build may omit `REPOSITORY`; Awen does not require version control.
 
 ### `SOURCES`
 
@@ -433,7 +463,9 @@ Before treating an Awen sheet as committed, confirm:
 - seed/demo/fixture inputs are realistic enough to exercise the behaviours they are meant to validate;
 - pre-written content that must not be rewritten is marked `VERBATIM`;
 - unresolved decisions are in `BLOCKERS`, not left for the executor to guess;
-- `DONE WHEN` describes observable completion.
+- `DONE WHEN` describes observable completion;
+- when modifying an existing project, `REPOSITORY` identifies the exact codebase and, when needed, its branch/base revision;
+- the executor can tell which existing behaviour must be preserved rather than re-created.
 
 ## 11. v0.1 non-goals
 

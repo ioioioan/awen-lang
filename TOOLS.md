@@ -10,7 +10,7 @@ For most projects, keep the toolchain simple:
 
 1. **Creative workspace** — explore, research, compare and refine the idea before committing to production.
 2. **Source editor** — maintain the authoritative Markdown, data, scripts, references and other source material.
-3. **Version control** — keep `project.awen` and its sources together under version history. Git is a sensible default but is not required by Awen.
+3. **Version control** — keep `project.awen` and its sources together under version history. Git is a sensible default but is not required by Awen. When changing an existing repository, use `REPOSITORY` to identify the local root and optionally the remote, branch and base revision.
 4. **Execution agent or production system** — use one capable agent or toolchain to execute the assembly sheet. For software this may be a coding agent; for a book a writing agent; for video a set of generation and editing tools; for data an analysis or transformation environment.
 5. **Deterministic verification** — prefer compilers, tests, linters, schemas, validators, checksums, CI and other objective checks wherever the output permits them.
 6. **Human approval** — keep consequential decisions behind the `APPROVAL` boundaries declared by the creator.

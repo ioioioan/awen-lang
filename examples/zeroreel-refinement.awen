@@ -1,0 +1,54 @@
+AWEN 0.1
+
+PROJECT ZeroReel
+OUTPUT feature refinement
+ROOT .
+
+REPOSITORY
+  MODE existing
+  ROOT .
+  REMOTE https://github.com/<owner>/zeroreel
+  BRANCH main
+  BASE <commit-or-tag-if-pinning-is-needed>
+
+SOURCES
+  PRODUCT       ./docs/product.md       AUTHORITATIVE
+  UX            ./docs/ux.md            AUTHORITATIVE
+  ARCHITECTURE  ./docs/architecture.md  AUTHORITATIVE
+  ENGINEERING   ./docs/engineering.md   AUTHORITATIVE
+
+BEHAVIOR
+  primary film playback happens on the ZeroReel film detail page through approved YouTube or Vimeo embeds when embedding is allowed
+  users stay on ZeroReel for the primary watch experience
+  external source links remain visible for provenance, fallback and platform attribution
+
+REQUIRE
+  preserve the existing responsive web MVP
+  preserve submission, curation, discovery and profile flows unless explicitly changed
+  embedded playback remains the primary watch path
+
+PREFER
+  smallest change that satisfies this refinement
+  CSS OVER JavaScript for presentation
+  progressive enhancement
+
+AVOID
+  unrelated refactors
+  new dependencies unless necessary
+  reopening settled product decisions
+
+FORBID
+  outbound-only primary film playback
+  rebuilding the application from scratch
+
+APPROVAL
+  HUMAN destructive database migrations
+  HUMAN authentication architecture changes
+  HUMAN new external services
+
+DONE WHEN
+  approved YouTube and Vimeo sources embed correctly on film detail pages
+  source provenance and fallback links remain visible
+  existing product flows still work
+  relevant tests pass
+  no unrelated existing behaviour is changed

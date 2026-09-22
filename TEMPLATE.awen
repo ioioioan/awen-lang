@@ -5,6 +5,13 @@ PROJECT <name>
 OUTPUT <artifact>
 ROOT .
 
+REPOSITORY
+  MODE existing
+  ROOT .
+  REMOTE <optional repository URL>
+  BRANCH <optional branch>
+  BASE <optional commit or tag>
+
 SOURCES
   <ROLE>  ./path/to/source.md     AUTHORITATIVE
   <ROLE>  ./path/to/content.md    AUTHORITATIVE VERBATIM

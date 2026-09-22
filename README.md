@@ -25,6 +25,7 @@ It can describe:
 - what is being produced;
 - which files are authoritative sources;
 - where those files live;
+- which existing repository and revision should be modified, when applicable;
 - which pre-written content must be preserved verbatim;
 - which tools, languages, models or stacks are chosen;
 - core user or artifact behaviour that must not be misinterpreted;
@@ -64,7 +65,7 @@ finished artifact
 3. **Human-readable.** Awen uses a small declarative vocabulary and minimal syntax.
 4. **Precision over ceremony.** Add only information that removes ambiguity or preserves intent.
 5. **Progressive enhancement.** Markdown and ordinary project files remain useful without Awen-aware tooling.
-6. **Exact sources.** Prefer explicit relative paths, roles and authority over dumping whole workspaces into context.
+6. **Exact sources and repository context.** Prefer explicit relative paths, roles, authority and existing-repository identity over dumping whole workspaces into context.
 7. **Semantic behaviour first.** Describe what the user or artifact must actually experience, not just the technologies involved.
 8. **Explicit seams.** If a mock, stub, placeholder or temporary substitute is acceptable, say so. Do not let an agent silently replace real behaviour with a seam.
 9. **Human authority.** Approval gates make consequential decisions explicit.
@@ -80,6 +81,13 @@ AWEN 0.1
 PROJECT ZeroReel
 OUTPUT software MVP
 ROOT .
+
+REPOSITORY
+  MODE existing
+  ROOT .
+  REMOTE https://github.com/example/zeroreel
+  BRANCH main
+  BASE <optional commit>
 
 SOURCES
   PRODUCT       ./docs/product.md       AUTHORITATIVE
@@ -159,7 +167,7 @@ See [`TOOLS.md`](TOOLS.md) for the tool-selection philosophy.
 - [`WORKFLOW.md`](WORKFLOW.md) — how Awen fits between creative work and production.
 - [`TOOLS.md`](TOOLS.md) — AI-agnostic tool roles, optional integrations and verification guidance.
 - [`TEMPLATE.awen`](TEMPLATE.awen) — canonical starting template.
-- [`examples/`](examples/) — small examples across software, book, video and data outputs.
+- [`examples/`](examples/) — small examples across software, book, video and data outputs, including an existing-repository ZeroReel refinement handoff.
 
 ## MVP status
 

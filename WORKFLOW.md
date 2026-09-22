@@ -24,7 +24,8 @@ Resolve the important choices:
 - acceptable MVP seams or temporary substitutes;
 - approval boundaries;
 - completion criteria;
-- pre-written content that must remain verbatim.
+- pre-written content that must remain verbatim;
+- whether production is a new build or a change to an existing repository, and the exact repository/base state when that matters.
 
 Do not ask the production agent to rediscover decisions that the creator has already made.
 
@@ -45,19 +46,20 @@ project.awen
 production
 ```
 
-Before handoff, check five ambiguity hotspots:
+Before handoff, check six ambiguity hotspots:
 
 1. **Behaviour** — is the real user/artifact experience explicit, including primary versus fallback paths?
 2. **Reality versus seam** — which integrations or outputs must be real now, and which temporary substitutes are explicitly acceptable?
 3. **Inputs** — do seed/demo/fixture inputs actually exercise the real behaviour they are meant to validate?
 4. **Content** — is any pre-written copy, script or manuscript required verbatim?
-5. **Blockers** — has every unresolved decision been surfaced instead of left for the executor to guess?
+5. **Repository state** — for existing work, is the exact repository, branch/base revision and preservation boundary clear?
+6. **Blockers** — has every unresolved decision been surfaced instead of left for the executor to guess?
 
 ## 4. Execute
 
 Give the assembly sheet and sources to the chosen AI, agent or production tool.
 
-For software this may be a coding agent.
+For software this may be a coding agent. When `REPOSITORY` is declared with `MODE existing`, the agent should inspect and modify that repository rather than treating the handoff as a fresh build.
 For a book it may be a writing model or agent.
 For video it may be a sequence of image, video, audio and editing systems.
 For data it may be an analysis or transformation agent.
@@ -92,7 +94,7 @@ A production pass is complete when the declared output exists and the acceptance
 
 ## 8. Update deliberately
 
-If the committed intent changes, update the authoritative sources and `project.awen` deliberately.
+If the committed intent changes, update the authoritative sources and `project.awen` deliberately. For existing products, permanent new rules discovered during a feature/refinement pass should be folded back into the project's authoritative sources or main assembly sheet rather than living only in a temporary change handoff.
 
 The assembly sheet is not a transcript of every production decision. It is the current contract for what should be made.
 

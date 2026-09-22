@@ -21,6 +21,7 @@ Prefer examples and evidence from real projects over speculative language growth
 
 - Keep `SPEC.md` authoritative for language semantics.
 - Update `TEMPLATE.awen` when a core section changes.
+- Update an existing-project example when repository semantics change.
 - Add or update examples when a change affects real usage.
 - Avoid breaking v0.1 syntax without a clear precision or usability benefit.
 - Prefer small hardening changes proven by real assembly sheets.
