@@ -31,7 +31,9 @@ Do not ask the production agent to rediscover decisions that the creator has alr
 
 ## 3. Assemble
 
-Create `project.awen` from the committed synthesis.
+Copy `TEMPLATE.awen` to `project.awen` at the project root and fill it from the committed synthesis. Replace placeholders and remove unused optional sections.
+
+`project.awen` is the canonical root assembly sheet. List `SOURCES` in the order the agent must read them, with explicit authority and handling qualifiers. Reading order does not override authority.
 
 The assembly sheet should be short enough to inspect in one sitting and precise enough that an unfamiliar capable AI can understand the build without reading the entire creative history.
 
@@ -58,6 +60,14 @@ Before handoff, check six ambiguity hotspots:
 ## 4. Execute
 
 Give the assembly sheet and sources to the chosen AI, agent or production tool.
+
+Agents must start with `project.awen`, then follow its source reading order, authority rules, constraints, approvals and completion criteria before making changes. A repository's `AGENTS.md` should say “Start with `project.awen`.”
+
+```text
+AGENTS.md -> project.awen -> referenced sources -> build
+```
+
+For tools that do not automatically read `AGENTS.md`, include this in the handoff prompt: “Start with `project.awen` and follow it as the assembly sheet.” If the root sheet or a declared source is missing, surface it rather than choosing a substitute.
 
 For software this may be a coding agent. When `REPOSITORY` is declared with `MODE existing`, the agent should inspect and modify that repository rather than treating the handoff as a fresh build.
 For a book it may be a writing model or agent.
@@ -95,6 +105,8 @@ A production pass is complete when the declared output exists and the acceptance
 ## 8. Update deliberately
 
 If the committed intent changes, update the authoritative sources and `project.awen` deliberately. For existing products, permanent new rules discovered during a feature/refinement pass should be folded back into the project's authoritative sources or main assembly sheet rather than living only in a temporary change handoff.
+
+Multiple `.awen` files may coexist. Keep `project.awen` as the root and reference applicable change/refinement sheets in its `SOURCES` with explicit authority. Read their sources in order before continuing the root list. A change sheet does not silently override the root contract; surface conflicting declarations. See [`examples/README.md`](examples/README.md) for a root-and-refinement layout.
 
 The assembly sheet is not a transcript of every production decision. It is the current contract for what should be made.
 

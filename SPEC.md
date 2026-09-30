@@ -25,15 +25,23 @@ A valid Awen document should be:
 
 ## 3. File convention
 
-Recommended filename:
+`project.awen` is the canonical entrypoint and root assembly sheet for every Awen project. It must be located at the project root:
 
 ```text
 project.awen
 ```
 
+Agents must start with `project.awen` before reading production sources or making changes. It defines the reading order and source authority through `SOURCES`. An `AGENTS.md` may direct agents to it; tools that do not discover `AGENTS.md` should be explicitly instructed to start with `project.awen`.
+
+Multiple `.awen` files may exist, but `project.awen` remains the root. It may reference change/refinement sheets through `SOURCES`, using a creator-chosen role such as `CHANGE` or `REFINEMENT` and an explicit authority level. A referenced sheet does not replace the root or silently override its constraints, approvals or completion criteria. Apply authoritative change/refinement sheets within their declared scope; contextual sheets are supporting material only. Surface contradictions under section 6 rather than treating a later sheet as an automatic override.
+
+```text
+AGENTS.md -> project.awen -> referenced sources -> build
+```
+
 Recommended encoding: UTF-8.
 
-Paths are relative to top-level `ROOT` unless explicitly documented otherwise. When `REPOSITORY` is present, its `ROOT` identifies the existing repository to modify.
+Paths are relative to top-level `ROOT` unless explicitly documented otherwise. Resolve a relative top-level `ROOT` from the project root containing `project.awen`, including in referenced change/refinement sheets. When `REPOSITORY` is present, its `ROOT` identifies the existing repository to modify.
 
 ## 4. Syntax philosophy
 
@@ -167,6 +175,8 @@ Source role names are intentionally open. Examples include `PRODUCT`, `UX`, `ARC
 Source resolution rules:
 
 - resolve relative paths against `ROOT`;
+- read sources in their listed order, from top to bottom; when an authoritative source is an `.awen` sheet, read its declared sources in order before continuing the parent list; do not follow circular references indefinitely—surface the cycle;
+- read contextual `.awen` sheets as supporting material, not as instructions to execute or expand their source lists;
 - do not invent or search for a replacement when an exact declared path is missing; surface the missing source;
 - read `AUTHORITATIVE` sources as governing inputs and `CONTEXT` sources as supporting inputs;
 - preserve `VERBATIM` sources exactly unless the creator approves a change;
@@ -456,6 +466,7 @@ For pre-written material:
 
 Before treating an Awen sheet as committed, confirm:
 
+- `project.awen` is present at the project root and declares the source reading order and authority, including any change/refinement sheets;
 - the primary user or artifact behaviour is unambiguous;
 - primary and fallback paths are distinguished where relevant;
 - runtime/integration depth is clear enough that the executor cannot mistake a placeholder for the intended behaviour;

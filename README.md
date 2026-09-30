@@ -12,7 +12,15 @@ You explore, research, argue, refine and lock decisions in whatever workspace yo
 
 ## For AI agents
 
-If you are an AI or coding/production agent reading this repository, start with [`AGENTS.md`](AGENTS.md), then read [`SPEC.md`](SPEC.md) and [`TEMPLATE.awen`](TEMPLATE.awen).
+Start with [`project.awen`](project.awen), the canonical root assembly sheet. [`AGENTS.md`](AGENTS.md) directs agents there; `project.awen` defines the source reading order and authority.
+
+```text
+AGENTS.md -> project.awen -> referenced sources -> build
+```
+
+Every Awen project keeps `project.awen` at its project root. Copy [`TEMPLATE.awen`](TEMPLATE.awen) to that filename and replace its placeholders. Read `SOURCES` from top to bottom; reading order does not override source authority. Multiple `.awen` files may exist, but `project.awen` remains the root and can reference change/refinement sheets through `SOURCES`.
+
+For tools that do not automatically read `AGENTS.md`, use: “Start with `project.awen` and follow it as the assembly sheet.”
 
 Your job is to preserve a creator's settled intent and turn it into a concise assembly sheet or execute an existing assembly sheet with its declared sources. Do not treat Awen as an implementation language or invent unresolved decisions.
 
@@ -162,12 +170,13 @@ See [`TOOLS.md`](TOOLS.md) for the tool-selection philosophy.
 
 ## Repository contents
 
-- [`AGENTS.md`](AGENTS.md) — canonical entrypoint and operating instructions for AI agents.
+- [`project.awen`](project.awen) — canonical root assembly sheet, source reading order and authority for this repository.
+- [`AGENTS.md`](AGENTS.md) — operating instructions directing AI agents to `project.awen`.
 - [`SPEC.md`](SPEC.md) — Awen Lang v0.1 specification.
 - [`WORKFLOW.md`](WORKFLOW.md) — how Awen fits between creative work and production.
 - [`TOOLS.md`](TOOLS.md) — AI-agnostic tool roles, optional integrations and verification guidance.
-- [`TEMPLATE.awen`](TEMPLATE.awen) — canonical starting template.
-- [`examples/`](examples/) — small examples across software, book, video and data outputs, including an existing-repository ZeroReel refinement handoff.
+- [`TEMPLATE.awen`](TEMPLATE.awen) — starting template to save as `project.awen`.
+- [`examples/`](examples/README.md) — small examples across software, book, video and data outputs, including a root sheet with an existing-repository ZeroReel refinement handoff.
 
 ## MVP status
 

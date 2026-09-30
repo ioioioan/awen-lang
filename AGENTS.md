@@ -6,12 +6,17 @@ Its purpose is to turn a settled creative synthesis into a precise handoff for a
 
 ## Start here
 
-1. Read `README.md` for the project overview.
-2. Read `SPEC.md` for Awen Lang v0.1 semantics.
-3. Read `WORKFLOW.md` for the intended handoff workflow.
-4. Read `TOOLS.md` for the AI-agnostic tool philosophy.
-5. Use `TEMPLATE.awen` when creating a new assembly sheet.
-6. Read the closest example in `examples/` when useful.
+Start with `project.awen`.
+
+Treat it as the canonical root assembly sheet and source of build intent. Follow its source reading order, authority rules, constraints, approvals and completion criteria before making changes.
+
+```text
+AGENTS.md -> project.awen -> referenced sources -> build
+```
+
+Multiple `.awen` files may exist, but `project.awen` remains the root and may reference change/refinement sheets. Do not select another sheet as the entrypoint or silently treat it as an override.
+
+Use `TEMPLATE.awen` when creating a new project, saving the completed template as `project.awen` at that project's root. Read the closest example in `examples/` when useful.
 
 ## Core rule
 
@@ -41,10 +46,10 @@ An `.awen` file captures the creator's committed production intent: output, auth
 
 When an `.awen` file is provided for production:
 
-1. Read the assembly sheet first.
+1. Start with the project's `project.awen`, including when the request concerns a change/refinement sheet. Surface a missing root sheet rather than guessing which `.awen` file replaces it.
 2. If `REPOSITORY` is present, inspect that repository and verify any declared `BRANCH`/`BASE` before planning changes. Do not treat an existing repository as a fresh build.
 3. Preserve unrelated existing behaviour unless the assembly sheet explicitly changes it.
-4. Resolve and read its declared sources according to their roles, authority and handling qualifiers.
+4. Resolve and read its declared sources in listed order according to their roles, authority and handling qualifiers. Reading order does not override authority.
 5. Treat the assembly sheet and `AUTHORITATIVE` sources as the committed handoff.
 6. Preserve `VERBATIM` content exactly unless human approval changes it.
 7. Use `CONTEXT` sources as supporting material, not as authority over committed decisions.

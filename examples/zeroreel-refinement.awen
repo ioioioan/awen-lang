@@ -46,6 +46,11 @@ APPROVAL
   HUMAN authentication architecture changes
   HUMAN new external services
 
+EXECUTION
+  start with project.awen at the project root
+  use this sheet as changes/playback-refinement.awen referenced by the root sheet's SOURCES
+  ROOT . and source paths resolve from the project root
+
 DONE WHEN
   approved YouTube and Vimeo sources embed correctly on film detail pages
   source provenance and fallback links remain visible

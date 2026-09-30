@@ -54,6 +54,9 @@ BLOCKERS
   <unresolved decision that must not be guessed>
 
 EXECUTION
+  save this completed template as project.awen at the project root
+  agents start with project.awen and read SOURCES in listed order without changing their authority
+  reference any change/refinement sheets in SOURCES; project.awen remains the root assembly sheet
   INSTRUCTIONS <optional path to agent/workflow instructions>
 
 DONE WHEN

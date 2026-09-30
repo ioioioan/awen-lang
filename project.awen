@@ -1,0 +1,27 @@
+AWEN 0.1
+
+PROJECT Awen Lang
+OUTPUT language specification, documentation and assembly-sheet examples
+ROOT .
+
+SOURCES
+  SPECIFICATION ./SPEC.md AUTHORITATIVE
+  CONTRIBUTING ./CONTRIBUTING.md AUTHORITATIVE
+  OVERVIEW ./README.md CONTEXT
+  WORKFLOW ./WORKFLOW.md CONTEXT
+  TOOLS ./TOOLS.md CONTEXT
+  TEMPLATE ./TEMPLATE.awen CONTEXT
+  EXAMPLES ./examples/README.md CONTEXT
+
+REQUIRE
+  keep SPEC.md authoritative for language semantics
+  keep documentation, template and examples consistent with the specification
+  preserve the small, declarative and AI-agnostic nature of Awen
+
+EXECUTION
+  INSTRUCTIONS ./AGENTS.md
+  template and example sheets illustrate usage; their production tasks are not this repository's build
+
+DONE WHEN
+  the requested repository change is reflected consistently in affected documentation, template and examples
+  repository documentation links resolve and illustrative project paths are identified as such
