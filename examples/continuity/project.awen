@@ -1,0 +1,37 @@
+AWEN 0.1
+
+REVISION example-post-resolution
+PROJECT ZeroReel
+OUTPUT responsive web MVP
+ROOT .
+
+SOURCES
+  PRODUCT       ./docs/product.md                        AUTHORITATIVE
+  UX            ./docs/ux.md                             AUTHORITATIVE
+  ARCHITECTURE  ./docs/architecture.md                   AUTHORITATIVE
+  STATE         ./PROJECT_STATE.md                       CONTEXT
+  FEEDBACK      ./feedback/FEEDBACK_LOG.md               CONTEXT
+  DECISION      ./decisions/DEC-001-film-playback.md     CONTEXT
+
+BEHAVIOR
+  primary film playback happens on the film detail page through approved external embeds
+  original external source link remains visible as provenance and fallback
+  ZeroReel does not host or copy the underlying video
+
+REQUIRE
+  responsive web first
+  accessible film playback and fallback interaction
+
+FORBID
+  copying or hosting submitted video
+  treating submission as proof of ownership
+
+APPROVAL
+  HUMAN changes to primary playback behaviour
+  HUMAN new video providers or hosting services
+
+DONE WHEN
+  permitted embeds play on the film detail page
+  unsupported or blocked embeds expose a working source-link fallback
+  provenance remains visible
+  tests pass
