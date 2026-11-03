@@ -33,7 +33,7 @@ project.awen
 
 Agents must start with `project.awen` before reading production sources or making changes. It defines the reading order and source authority through `SOURCES`. An `AGENTS.md` may direct agents to it; tools that do not discover `AGENTS.md` should be explicitly instructed to start with `project.awen`.
 
-Multiple `.awen` files may exist, but `project.awen` remains the root. It may reference change/refinement sheets through `SOURCES`, using a creator-chosen role such as `CHANGE` or `REFINEMENT` and an explicit authority level. A referenced sheet does not replace the root or silently override its constraints, approvals or completion criteria. Apply authoritative change/refinement sheets within their declared scope; contextual sheets are supporting material only. Surface contradictions under section 6 rather than treating a later sheet as an automatic override.
+A named sheet such as `new-project.awen` may contain a scoped build or refinement handoff, but does not replace the predictable `project.awen` entrypoint. For a small project, one `project.awen` is enough. Multiple `.awen` files may exist, but `project.awen` remains the root. It may reference change/refinement sheets through `SOURCES`, using a creator-chosen role such as `CHANGE` or `REFINEMENT` and an explicit authority level. A referenced sheet does not replace the root or silently override its constraints, approvals or completion criteria. Apply authoritative change/refinement sheets within their declared scope; contextual sheets are supporting material only. Surface contradictions under section 6 rather than treating a later sheet as an automatic override.
 
 ```text
 AGENTS.md -> project.awen -> referenced sources -> build
@@ -54,7 +54,7 @@ Awen uses section headings and indented declarations.
 - Awen should not imitate an implementation language.
 - Awen should express the minimum structure needed to preserve intent and remove production ambiguity.
 
-Awen v0.1 is a human-readable convention, not a machine-validated grammar. Numbered items in ordered sections are ordinary text, not new syntax. Use numbered steps for procedures and agent tasks; use plain declarations for unordered constraints. Future grammar work must preserve readability and backwards compatibility where practical.
+Awen v0.1 is a human-readable convention, not a machine-validated grammar. Numbered items in ordered sections are ordinary text, not new syntax. Number sequential tasks under EXECUTION and acceptance criteria under DONE WHEN; use plain declarations for unordered constraints. Future grammar work must preserve readability and backwards compatibility where practical.
 
 ## 5. Core sections
 
@@ -336,10 +336,10 @@ Acceptance criteria for the output.
 
 ```awen
 DONE WHEN
-  the program starts
-  the welcome message is visible
-  tests pass
-  deployment succeeds
+  1. the program starts
+  2. the welcome message is visible
+  3. tests pass
+  4. deployment succeeds
 ```
 
 Criteria should be concrete enough that a human or production system can assess completion.
@@ -372,6 +372,9 @@ Optional. References downstream operating instructions or an intentionally chose
 ```awen
 EXECUTION
   INSTRUCTIONS ./AGENTS.md
+  1. inspect the authoritative sources
+  2. implement the declared behaviour
+  3. run the declared checks
 ```
 
 For software, `AGENTS.md` or an equivalent file may describe how a coding agent should operate inside the repository. `project.awen` remains the assembly sheet describing what is being built, its governing sources and its production boundaries.
