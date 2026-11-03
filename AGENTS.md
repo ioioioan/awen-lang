@@ -44,6 +44,9 @@ An `.awen` file captures the creator's committed production intent: output, auth
 
 ## Execution
 
+Follow the numbered sequence below. Do not assume Awen supplies automatic cross-session memory or synchronisation.
+
+
 When an `.awen` file is provided for production:
 
 1. Start with the project's `project.awen`, including when the request concerns a change/refinement sheet. Surface a missing root sheet rather than guessing which `.awen` file replaces it.
