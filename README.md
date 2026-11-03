@@ -110,6 +110,8 @@ Create `docs/requirements.md` with the single requirement: "The program prints H
 
 This is a human-readable handoff, not an executable program. The agent still needs access to the source files, appropriate tools and a verification environment.
 
+For a fuller example, see the [complete New Project source pack](examples/complete-project/README.md), including a detailed assembly sheet, all declared source documents, numbered tasks, and a separate named refinement sheet.
+
 ## Recommended production workflow
 
 Awen deliberately recommends **roles**, not a mandatory tool stack:
@@ -140,7 +142,7 @@ See [`TOOLS.md`](TOOLS.md) for the tool-selection philosophy.
 - [`WORKFLOW.md`](WORKFLOW.md) — how Awen fits between creative work and production.
 - [`TOOLS.md`](TOOLS.md) — AI-agnostic tool roles, optional integrations and verification guidance.
 - [`TEMPLATE.awen`](TEMPLATE.awen) — starting template to save as `project.awen`.
-- [`examples/`](examples/README.md) — small examples across software, book, video and data outputs, including a generic existing-project refinement handoff.
+- [`examples/`](examples/README.md) — introductory and complete examples across software, book, video and data outputs, including a generic existing-project refinement handoff.
 
 ## MVP status
 
