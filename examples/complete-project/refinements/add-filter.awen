@@ -2,7 +2,7 @@ AWEN 0.1
 
 PROJECT New Project
 OUTPUT task-list filtering refinement
-ROOT ..
+ROOT .
 
 REPOSITORY
   MODE existing
