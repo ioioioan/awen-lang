@@ -16,5 +16,10 @@ PREFER
 APPROVAL
   HUMAN <optional approval gate>
 
+EXECUTION
+  1. <read authoritative sources and check for conflicts>
+  2. <implement the required output>
+  3. <verify the result>
+
 DONE WHEN
   1. <concrete, verifiable acceptance criterion>
