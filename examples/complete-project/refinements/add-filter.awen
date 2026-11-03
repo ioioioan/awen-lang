@@ -1,0 +1,35 @@
+AWEN 0.1
+
+PROJECT New Project
+OUTPUT task-list filtering refinement
+ROOT .
+
+REPOSITORY
+  MODE existing
+  ROOT .
+
+SOURCES
+  CHANGE ./refinements/filter-requirements.md AUTHORITATIVE
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
+
+BEHAVIOR
+  visitors can show all, active or completed tasks
+  changing the filter does not delete or alter tasks
+
+REQUIRE
+  preserve existing add, complete, remove and persistence behaviour
+
+AVOID
+  unrelated redesigns and new dependencies
+
+EXECUTION
+  1. Read the root project.awen and all authoritative sources.
+  2. Inspect the existing task-list implementation and tests.
+  3. Add the filter controls without changing stored task data.
+  4. Test all three filters and regression-test existing behaviour.
+  5. Report any conflicts with the root sheet before proceeding.
+
+DONE WHEN
+  1. All, Active and Completed views show the correct tasks.
+  2. Existing task operations and persistence still work.
+  3. Tests pass.

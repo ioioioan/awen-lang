@@ -1,0 +1,15 @@
+AWEN 0.1
+
+PROJECT Hello World
+OUTPUT command-line program
+ROOT .
+
+SOURCES
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
+
+REQUIRE
+  print Hello, world! to standard output
+
+DONE WHEN
+  1. the program runs without errors
+  2. standard output is exactly Hello, world!

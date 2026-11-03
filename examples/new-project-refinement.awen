@@ -1,0 +1,26 @@
+AWEN 0.1
+
+PROJECT New Project
+OUTPUT home page refinement
+ROOT .
+
+REPOSITORY
+  MODE existing
+  ROOT .
+  BRANCH main
+
+SOURCES
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
+  CHANGE ./docs/change.md AUTHORITATIVE
+
+REQUIRE
+  preserve existing routes and content
+  add a visible heading to the home page
+
+AVOID
+  unrelated changes
+
+DONE WHEN
+  1. the home page heading is visible
+  2. existing routes still work
+  3. relevant tests pass
