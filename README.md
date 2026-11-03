@@ -6,7 +6,7 @@ Awen Lang is a small declarative language for handing a settled creative synthes
 
 It is designed for the moment after creative exploration is finished and before production begins.
 
-You explore, research, argue, refine and lock decisions in whatever workspace you prefer. Then you distil the committed result into one `.awen` assembly sheet plus the exact source files that matter. A capable AI, coding agent or production tool can then execute from that handoff with far less guesswork.
+You explore, research, argue, refine and lock decisions in whatever workspace you prefer. Then you distil the committed result into one `.awen` assembly sheet plus the exact source files that matter. A capable AI, coding agent or production tool can then execute from that handoff with less ambiguity.
 
 > **Vibe freely. Commit deliberately. Build precisely.**
 
@@ -45,7 +45,11 @@ It can describe:
 
 Awen does **not** replace programming languages, creative tools, models, agents or production workflows. It sits above them as the assembly sheet.
 
-Awen also has **no official AI vendor or execution stack**. A project can be assembled with Codex, Claude, Gemini, Cursor, another capable agent, a specialist production pipeline, or future tools without changing Awen's core model.
+Awen has **no official AI vendor or execution stack**. A project can be assembled with Codex, Claude, Gemini, Cursor, another capable agent, a specialist production pipeline, or future tools without changing Awen's core model.
+
+## When it adds value
+
+Use Awen when decisions and source files are spread across several documents, or when an execution agent needs a precise, reviewable handoff. For a small task already clear in a README or agent instruction file, Awen may add no value. It does not provide memory, synchronisation, execution or guarantees against agent error.
 
 ## Why it exists
 
@@ -83,68 +87,28 @@ finished artifact
 
 ## Minimal example
 
+Create a file named `project.awen` at the root of a new project:
+
 ```awen
 AWEN 0.1
 
-PROJECT ZeroReel
-OUTPUT software MVP
+PROJECT Hello World
+OUTPUT command-line program
 ROOT .
 
-REPOSITORY
-  MODE existing
-  ROOT .
-  REMOTE https://github.com/example/zeroreel
-  BRANCH main
-  BASE <optional commit>
-
 SOURCES
-  PRODUCT       ./docs/product.md       AUTHORITATIVE
-  UX            ./docs/ux.md            AUTHORITATIVE
-  CONTENT       ./content/homepage.md    AUTHORITATIVE VERBATIM
-  RESEARCH      ./docs/research.md       CONTEXT
-
-STACK
-  TypeScript
-  PostgreSQL
-  Azure
-
-BEHAVIOR
-  primary film playback stays on the film detail page through approved embeds
-  external source links remain visible for provenance, fallback and attribution
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
 
 REQUIRE
-  responsive web
-  semantic HTML
-  accessibility
-
-PREFER
-  CSS OVER JavaScript
-  progressive enhancement
-  native platform features
-
-AVOID
-  unnecessary dependencies
-  unnecessary client state
-
-FORBID
-  client-side authorization
-
-SEAMS
-  only explicitly listed temporary substitutes are acceptable
-
-APPROVAL
-  HUMAN authentication changes
-  HUMAN database migrations
-  HUMAN new external services
+  print Hello, world! to standard output
 
 DONE WHEN
-  film submission works
-  curation works
-  discovery works
-  responsive UI works
-  tests pass
-  deployment succeeds
+  running the program prints Hello, world!
 ```
+
+Create `docs/requirements.md` with the single requirement: "The program prints Hello, world! to standard output." Give the project directory to a capable coding agent and instruct it to start with `project.awen`.
+
+This is a human-readable handoff, not an executable program. The agent still needs access to the source files, appropriate tools and a verification environment.
 
 ## Recommended production workflow
 
@@ -176,7 +140,7 @@ See [`TOOLS.md`](TOOLS.md) for the tool-selection philosophy.
 - [`WORKFLOW.md`](WORKFLOW.md) — how Awen fits between creative work and production.
 - [`TOOLS.md`](TOOLS.md) — AI-agnostic tool roles, optional integrations and verification guidance.
 - [`TEMPLATE.awen`](TEMPLATE.awen) — starting template to save as `project.awen`.
-- [`examples/`](examples/README.md) — small examples across software, book, video and data outputs, including a root sheet with an existing-repository ZeroReel refinement handoff.
+- [`examples/`](examples/README.md) — small examples across software, book, video and data outputs, including a generic existing-project refinement handoff.
 
 ## MVP status
 
