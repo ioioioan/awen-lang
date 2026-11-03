@@ -1,5 +1,3 @@
-# Awen starter template: delete placeholder lines and add optional sections only when needed.
-# For existing repositories, add REPOSITORY (MODE existing, ROOT, optional REMOTE/BRANCH/BASE).
 AWEN 0.1
 
 PROJECT <name>
