@@ -11,6 +11,10 @@ Once that foundation exists, the same repository can preserve context across lat
 
 Awen does not provide agent memory or automatic platform synchronisation. Every participating workspace or agent must read the current repository revision.
 
+## Scope
+
+This is an optional continuity workflow, not a required part of Awen v0.1. It depends on participating tools reading the same Git revision. It does not create agent memory.
+
 ## Core principle
 
 A project uses one Git repository as its shared, versioned workspace.
@@ -96,31 +100,21 @@ Implements the approved sources. Existing implementation is evidence of the curr
 
 ## Initial production workflow
 
-```text
-Explore freely
-→ settle product and creative decisions
-→ write authoritative sources
-→ assemble project.awen
-→ commit the production contract
-→ agent implements
-→ tests and verification run
-→ implementation committed
-```
+1. Settle the intended output and decisions.
+2. Write authoritative sources.
+3. Create `project.awen` with exact source paths.
+4. Commit the handoff.
+5. Ask the agent to read the current revision and implement.
+6. Verify against `DONE WHEN` and commit the result.
 
 ## Continuing production workflow
 
-```text
-Feedback or contradiction discovered
-→ record the observation
-→ evaluate against authoritative sources and evidence
-→ accept, reject, defer or request clarification
-→ update authoritative sources when accepted
-→ update .awen only if its contract changed
-→ commit the reconciled source state
-→ agent pulls the new revision
-→ implementation and verification continue
-→ implementation committed
-```
+1. Record feedback or a contradiction.
+2. Evaluate it against evidence and authoritative sources.
+3. Accept, reject, defer or request clarification.
+4. Update sources and `project.awen` only where the accepted decision changes them.
+5. Commit the new state.
+6. Have the agent read that revision, implement, verify and commit.
 
 ## Synchronisation rules
 
