@@ -1,57 +1,22 @@
-# Awen examples
+# Examples
 
-These are illustrative handoffs, not runnable source packs. Their referenced product documents, content and repositories must be supplied by the project using them; replace repository and revision placeholders before execution.
+These examples are generic, illustrative handoffs. They are not runnable source packs unless you also create the referenced files.
 
-For a new project, copy one of these root-sheet examples to `project.awen` at that project's root:
+1. [Hello World](hello-world.awen) — minimal software handoff.
+2. [New Project](new-project.awen) — simple website with source authority.
+3. [New Project refinement](new-project-refinement.awen) — change to an existing website.
+4. [Book](book.awen) — manuscript editing.
+5. [Video](video.awen) — short film.
+6. [Data](data.awen) — dataset transformation.
 
-- [`zeroreel.awen`](zeroreel.awen) — responsive web MVP.
-- [`book.awen`](book.awen) — edited manuscript.
-- [`video.awen`](video.awen) — short film.
-- [`data.awen`](data.awen) — cleaned dataset.
+## Using an example
 
-The descriptive filenames distinguish examples in this collection. In each actual project, `project.awen` is the canonical root assembly sheet. Agents start there and read `SOURCES` from top to bottom, respecting each source's authority.
+1. Copy the chosen root example to `project.awen` in your project root.
+2. Create or replace every referenced source file.
+3. Remove placeholders and unused sections.
+4. Ask the agent to read `project.awen` first.
+5. Verify the output against `DONE WHEN`.
 
-## Root with a refinement sheet
+For an existing project, retain its root `project.awen` and list the refinement sheet as an `AUTHORITATIVE` source. A refinement cannot silently override the root contract. Missing files and conflicting authoritative decisions must be reported.
 
-For an existing ZeroReel project, retain its `project.awen` and copy [`zeroreel-refinement.awen`](zeroreel-refinement.awen) to `changes/playback-refinement.awen`:
-
-```text
-AGENTS.md
-project.awen
-docs/
-  product.md
-  ux.md
-  architecture.md
-  engineering.md
-  references.md
-changes/
-  playback-refinement.awen
-```
-
-Add the refinement to the root sheet's existing `SOURCES` list:
-
-```awen
-SOURCES
-  PRODUCT       ./docs/product.md                    AUTHORITATIVE
-  UX            ./docs/ux.md                         AUTHORITATIVE
-  ARCHITECTURE  ./docs/architecture.md               AUTHORITATIVE
-  ENGINEERING   ./docs/engineering.md                AUTHORITATIVE
-  REFERENCE     ./docs/references.md                 CONTEXT
-  REFINEMENT    ./changes/playback-refinement.awen   AUTHORITATIVE
-```
-
-Read these entries in order, including the refinement's sources when reached. `ROOT .` in both sheets refers to the project root, so the refinement still resolves `./docs/` there. The refinement applies within its declared scope; it does not replace the root or silently override its constraints, approvals or completion criteria. Surface contradictions instead of choosing whichever sheet was read last. Use `CONTEXT` for a sheet supplied only as background.
-
-The project's `AGENTS.md` should contain:
-
-```markdown
-# Agent instructions
-
-Start with `project.awen`.
-
-Follow its source reading order, authority rules, constraints, approvals and completion criteria before making changes.
-```
-
-```text
-AGENTS.md -> project.awen -> referenced sources -> build
-```
+Awen does not automatically transfer context between agents. Each agent must read the same current repository revision.
