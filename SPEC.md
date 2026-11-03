@@ -54,7 +54,7 @@ Awen uses section headings and indented declarations.
 - Awen should not imitate an implementation language.
 - Awen should express the minimum structure needed to preserve intent and remove production ambiguity.
 
-Awen v0.1 is defined semantically rather than by a formal parser grammar. Future grammar work must preserve readability and backwards compatibility where practical.
+Awen v0.1 is a human-readable convention, not a machine-validated grammar. Numbered items in ordered sections are ordinary text, not new syntax. Use numbered steps for procedures and agent tasks; use plain declarations for unordered constraints. Future grammar work must preserve readability and backwards compatibility where practical.
 
 ## 5. Core sections
 
@@ -81,7 +81,7 @@ Use this when stale or changing sources could make the handoff ambiguous.
 Human-readable project or artifact name.
 
 ```awen
-PROJECT ZeroReel
+PROJECT New Project
 ```
 
 ### `OUTPUT`
@@ -242,8 +242,8 @@ Use `BEHAVIOR` for statements such as what the user actually experiences, which 
 
 ```awen
 BEHAVIOR
-  primary film playback happens on the film detail page through approved embeds
-  external source links are secondary provenance and fallback paths
+  the home page displays a welcome message
+  the welcome message is visible without signing in
 ```
 
 `BEHAVIOR` is not a place for low-level implementation detail. It exists to prevent a technically plausible build from producing the wrong real-world experience.
@@ -336,8 +336,8 @@ Acceptance criteria for the output.
 
 ```awen
 DONE WHEN
-  submission works
-  curation works
+  the program starts
+  the welcome message is visible
   tests pass
   deployment succeeds
 ```
