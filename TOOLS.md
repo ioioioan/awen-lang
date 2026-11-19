@@ -17,6 +17,10 @@ For most projects, keep the toolchain simple:
 
 Awen should not encourage users to collect tools for their own sake. Choose the smallest production toolchain that can satisfy the assembly sheet.
 
+## Existing agent features
+
+Codex, Claude Code and other agents may already support repository instructions, plans, skills or persistent project files. Awen does not replace these capabilities. Use it only when a separate, portable contract for sources, authority, constraints and acceptance criteria adds clarity. No superiority over agent-native workflows is established without comparative testing.
+
 ## AI and model independence
 
 An Awen document should remain useful if the creator changes model, agent or vendor.

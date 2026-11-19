@@ -1,0 +1,21 @@
+AWEN 0.1
+
+PROJECT New Project
+OUTPUT simple website
+ROOT .
+
+SOURCES
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
+  CONTENT ./docs/welcome.md AUTHORITATIVE VERBATIM
+
+BEHAVIOR
+  visitors see the welcome message on the home page
+
+REQUIRE
+  responsive layout
+  semantic HTML
+
+DONE WHEN
+  1. the home page loads
+  2. the welcome message matches the source exactly
+  3. the layout works on narrow and wide screens

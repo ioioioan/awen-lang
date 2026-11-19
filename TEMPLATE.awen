@@ -1,63 +1,25 @@
 AWEN 0.1
 
-REVISION <optional commit, tag or source-pack version>
 PROJECT <name>
 OUTPUT <artifact>
 ROOT .
 
-REPOSITORY
-  MODE existing
-  ROOT .
-  REMOTE <optional repository URL>
-  BRANCH <optional branch>
-  BASE <optional commit or tag>
-
 SOURCES
-  <ROLE>  ./path/to/source.md     AUTHORITATIVE
-  <ROLE>  ./path/to/content.md    AUTHORITATIVE VERBATIM
-  <ROLE>  ./path/to/reference.md  CONTEXT
-
-IMPLEMENTATION
-  ROOT ./output-or-source-root/
-
-STACK
-  <chosen technology, medium or production component>
-
-TOOLS
-  <optional deliberately chosen tool/model/agent or capability>
-
-BEHAVIOR
-  <core user or artifact behaviour that must not be misinterpreted>
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
 
 REQUIRE
   <non-negotiable requirement>
 
 PREFER
-  <strong preference>
-
-AVOID
-  <choice normally not wanted>
-
-FORBID
-  <prohibited choice>
-
-SEAMS
-  <explicitly acceptable mock, stub, placeholder or temporary substitute>
+  <optional preference>
 
 APPROVAL
-  HUMAN <decision or change requiring approval>
-
-NON-GOALS
-  <explicitly excluded scope>
-
-BLOCKERS
-  <unresolved decision that must not be guessed>
+  HUMAN <optional approval gate>
 
 EXECUTION
-  save this completed template as project.awen at the project root
-  agents start with project.awen and read SOURCES in listed order without changing their authority
-  reference any change/refinement sheets in SOURCES; project.awen remains the root assembly sheet
-  INSTRUCTIONS <optional path to agent/workflow instructions>
+  1. <read authoritative sources and check for conflicts>
+  2. <implement the required output>
+  3. <verify the result>
 
 DONE WHEN
-  <concrete acceptance criterion>
+  1. <concrete, verifiable acceptance criterion>

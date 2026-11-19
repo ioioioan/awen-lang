@@ -39,10 +39,14 @@ An `.awen` file captures the creator's committed production intent: output, auth
 - Keep the assembly sheet concise. Put detailed narrative in source files rather than duplicating it in `.awen`.
 - Preserve explicit `REQUIRE`, `PREFER`, `AVOID`, and `FORBID` distinctions.
 - Preserve human approval gates.
+- Number sequential agent tasks under `EXECUTION` and acceptance criteria under `DONE WHEN`.
 - Make `DONE WHEN` criteria concrete enough to evaluate.
 - Remain vendor-neutral unless the creator deliberately selects a named model, agent, tool, language, framework, or service.
 
 ## Execution
+
+Follow the numbered sequence below. Do not assume Awen supplies automatic cross-session memory or synchronisation.
+
 
 When an `.awen` file is provided for production:
 

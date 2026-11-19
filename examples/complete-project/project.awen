@@ -1,0 +1,77 @@
+AWEN 0.1
+
+PROJECT New Project
+OUTPUT responsive task-list website
+ROOT .
+
+SOURCES
+  PRODUCT ./docs/requirements.md AUTHORITATIVE
+  UX ./docs/experience.md AUTHORITATIVE
+  CONTENT ./docs/welcome.md AUTHORITATIVE VERBATIM
+  ENGINEERING ./docs/engineering.md AUTHORITATIVE
+  REFERENCE ./docs/notes.md CONTEXT
+
+IMPLEMENTATION
+  ROOT ./src/
+  TESTS ./tests/
+
+STACK
+  HTML
+  CSS
+  JavaScript
+
+TOOLS
+  AGENT capable coding agent
+  TEST browser and automated checks
+
+BEHAVIOR
+  visitors can add tasks, mark them complete and remove them
+  tasks remain after refreshing the page
+  an empty task is not accepted
+  the welcome text is visible on first load
+
+REQUIRE
+  responsive layout and keyboard-accessible controls
+  semantic HTML and labelled inputs
+  persist tasks in browser local storage
+  no account or network service needed
+
+PREFER
+  plain JavaScript and minimal dependencies
+
+AVOID
+  unnecessary frameworks or build steps
+
+FORBID
+  remote transmission of task content
+  replacing functional task controls with a static mock
+
+SEAMS
+  STORAGE browser local storage is the accepted MVP storage boundary; no server persistence is required
+
+APPROVAL
+  HUMAN any external service or authentication feature
+
+NON-GOALS
+  collaboration and user accounts
+  cloud synchronisation
+
+BLOCKERS
+  none
+
+EXECUTION
+  1. Read every declared source in order and identify any conflicts before coding.
+  2. Implement the welcome view and accessible task form in ./src/.
+  3. Implement adding, completing and deleting tasks.
+  4. Persist tasks locally and restore them after refresh.
+  5. Add tests in ./tests/ for required task behaviour and persistence.
+  6. Run the tests and review narrow and wide layouts.
+  7. Report results and any unmet acceptance criteria.
+
+DONE WHEN
+  1. The exact welcome text from ./docs/welcome.md appears on the page.
+  2. A visitor can add, complete and remove tasks using keyboard controls.
+  3. Blank tasks are rejected.
+  4. Tasks survive a page refresh in the same browser.
+  5. No task content is transmitted to an external service.
+  6. Relevant tests pass and the layout works at narrow and wide widths.
